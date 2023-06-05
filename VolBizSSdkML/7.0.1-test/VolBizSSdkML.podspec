@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
                   VOL_LICENSE
 }
   s.author           = { 'liqiang.victor'        => 'liqiang.victor@bytedance.com' }
-  s.source           = { :http => "https://xqba.volces.com/obj/volcengine/#{s.name}/#{s.version}/#{s.name}.zip" }
+  s.source           = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/#{s.name}/7.0.1.1/#{s.name}.zip" }
   s.ios.deployment_target = '8.0'
 
   s.library = 'resolv.9', 'c++', 'z'
@@ -52,4 +52,5 @@ Pod::Spec.new do |s|
   s.source_files = "#{s.name}/*"
   s.vendored_libraries = "#{s.name}/libbizssdk_ml.a"
   s.preserve_paths = "#{s.name}/*"
+  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-lbizssdk_ml' }
 end
