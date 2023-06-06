@@ -41,16 +41,16 @@ Pod::Spec.new do |s|
   s.author           = { 'liqiang.victor'        => 'liqiang.victor@bytedance.com' }
   s.source           = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/#{s.name}/7.0.1.1/#{s.name}.zip" }
   s.ios.deployment_target = '8.0'
+  s.lib_stem = 'bizssdk_ml'
 
   s.library = 'resolv.9', 'c++', 'z'
-  s.frameworks = 'MessageUI', 'CoreTelephony', 'SystemConfiguration', 'CoreMotion','UIKit','JavaScriptCore'
+  s.frameworks = 'MessageUI', 'CoreTelephony', 'SystemConfiguration', 'CoreMotion','UIKit','JavaScriptCore','CoreLocation'
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-
-  s.frameworks = 'CoreLocation'
+  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => "-l#{s.lib_stem}" }
+  
   s.public_header_files = "#{s.name}/*.h"
   s.source_files = "#{s.name}/*"
-  s.vendored_libraries = "#{s.name}/libbizssdk_ml.a"
+  s.vendored_libraries = "#{s.name}/lib#{s.lib_stem}.a"
   s.preserve_paths = "#{s.name}/*"
-  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-lbizssdk_ml' }
 end
