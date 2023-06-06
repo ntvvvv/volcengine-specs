@@ -41,16 +41,16 @@ Pod::Spec.new do |s|
   s.author           = { 'liqiang.victor'        => 'liqiang.victor@bytedance.com' }
   s.source           = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/#{s.name}/7.0.1.1/#{s.name}.zip" }
   s.ios.deployment_target = '8.0'
-  $lib_stem = 'bizssdk_ml'
+  lib_stem = 'bizssdk_ml'
 
   s.library = 'resolv.9', 'c++', 'z'
   s.frameworks = 'MessageUI', 'CoreTelephony', 'SystemConfiguration', 'CoreMotion','UIKit','JavaScriptCore','CoreLocation'
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => "-l#{$lib_stem}" }
+  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => "-l#{lib_stem}" }
   
   s.public_header_files = "#{s.name}/*.h"
   s.source_files = "#{s.name}/*"
-  s.vendored_libraries = "#{s.name}/lib#{$lib_stem}.a"
+  s.vendored_libraries = "#{s.name}/lib#{lib_stem}.a"
   s.preserve_paths = "#{s.name}/*"
 end
